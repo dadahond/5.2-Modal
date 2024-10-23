@@ -1,5 +1,7 @@
 const list = document.querySelector("ol");
+const clearBtn = document.querySelector("#clear");
 const number = prompt("nechta rang kk");
+
 const colors = [
     "1",
     "2",
@@ -27,5 +29,17 @@ const randomColor = () => {
 };
 for (let i = 0; i < Number(number); i++) {
     const ranglar = randomColor();
-    list.innerHTML += `<li style="color: ${ranglar}">${ranglar}</li>`;
+    list.innerHTML += `<li style="color: ${ranglar}">${ranglar}<div>
+    <button >Apply</button>
+    <button>Delete</button>
+    </div></li>`;
 }
+clearBtn.addEventListener("click", () => (list.textContent = ""));
+document.addEventListener("click", (e) => {
+    if (e.target.textContent == "Delete") {
+        e.target.parentElement.parentElement.remove();
+    } else if (e.target.textContent == "Apply") {
+        const color = e.target.dataset.color;
+        document.body.style.backgroundColor = "color";
+    }
+});
