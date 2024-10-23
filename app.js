@@ -30,7 +30,7 @@ const randomColor = () => {
 for (let i = 0; i < Number(number); i++) {
     const ranglar = randomColor();
     list.innerHTML += `<li style="color: ${ranglar}">${ranglar}<div>
-    <button >Apply</button>
+    <button data-color=${ranglar}>Apply</button>
     <button>Delete</button>
     </div></li>`;
 }
@@ -40,6 +40,6 @@ document.addEventListener("click", (e) => {
         e.target.parentElement.parentElement.remove();
     } else if (e.target.textContent == "Apply") {
         const color = e.target.dataset.color;
-        document.body.style.backgroundColor = "color";
+        document.body.style.backgroundColor = color;
     }
 });
